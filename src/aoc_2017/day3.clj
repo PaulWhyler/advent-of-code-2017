@@ -32,6 +32,20 @@ last number in each circle:
 49 = 7^2
 81 = 9^2
 
+e.g. 1024
+From the last number of the circle that contains the target:  1089 = 33^2
+Take 2 from the sqrt : 31. + 1 and half  = 16
+Find segment containing number:
+1089 - 16 = 1073 : no
+1073 - 16 = 1057 : no
+1057 - 16 = 1041 : no
+1041 - 16 = 1025 : no
+1025 - 16 = 1009 : yes
+
+difference between last number and target: 1025 - 1024 = 1
+
+Manhatten distance =
+
 first number on each circle:
 1
 2
