@@ -30,18 +30,23 @@
     [(+ (Math/abs x) (Math/abs y)) [x y]]))
 
 
-(def distance (let [[dist final-pos] (solve 312051 [0 0] (fn [pos m] (add pos (move m))) :a)]
-                dist))
+(defn distance [n]
+  (let [[dist final-pos]
+        (solve n [0 0]
+               (fn [pos m]
+                 (add pos (move m))) :a)]
+    dist))
 
 (def adjacents [[-1 -1] [0 -1] [1 -1] [1 0] [1 1] [0 1] [-1 1] [-1 0]])
 
-(reduce (fn [[acc pos] m]
-          (let [next-pos (add pos (move m))
-                v (reduce +
-                        0
-                        (->> adjacents
-                             (map #(add pos %))
-                             (map #(get acc % 0))))]
-            [(assoc acc next-pos v) next-pos]))
-        [{[0 0] 1} [0 0]]
-        (take 10 (moves)))
+
+(last (reduce (fn [[acc pos tracking] m]
+                (let [next-pos (add pos (move m))
+                      v (reduce +
+                                1
+                                (->> adjacents
+                                     (map #(add pos %))
+                                     (map #(get acc % 0))))]
+                  [(assoc acc next-pos v) next-pos (conj tracking next-pos)]))
+              [{[0 0] 1} [0 0] []]
+              (take 10 (moves))))
