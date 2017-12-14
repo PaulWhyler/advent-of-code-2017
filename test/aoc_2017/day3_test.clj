@@ -3,9 +3,6 @@
             [clojure.test :refer [deftest is testing]]))
 
 (deftest day3
-  (testing "helpers"
-    (is (= 1089 (sut/find-last-in-circle 1024)))
-    (is (= 49 (sut/find-last-in-circle 45))))
   (testing "part 1"
     (is (= 0 (sut/distance 1)))
     (is (= 3 (sut/distance 12)))
@@ -13,7 +10,8 @@
     (is (= 31 (sut/distance 1024)))
     (is (= 430 (sut/distance 312051))))
   (testing "part 2"
-    (is (= true false))))
+    (is (= 362 (sut/solve2 357)))
+    (is (= 312453 (sut/solve2 312051)))))
 
 (def array
 
