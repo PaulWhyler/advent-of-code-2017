@@ -11,7 +11,7 @@ in the circle containing n"
       (int (Math/pow r 2))
       (recur (+ 2 r)))))
 
-(defn first-in-prior-circle
+(iefn first-in-prior-circle
   "Find the first in the circle prior to the
 circle containing n"
   [n]
