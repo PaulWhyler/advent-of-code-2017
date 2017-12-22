@@ -31,13 +31,11 @@
          seen #{}
          first-seen nil
          first-seen-count 0]
-    (if (or (seen v) (>= so-far 12))
+    (if (seen v)
       (if part2?
         (if (= first-seen v)
-          so-far
-          (do
-            #_(pprint {:v v :s so-far :seen seen :fst first-seen})
-            (recur (redist v) (inc so-far) (conj seen v) (if first-seen first-seen v) 0)))
+          first-seen-count
+          (recur (redist v) (inc so-far) (conj seen v) (if first-seen first-seen v) (inc first-seen-count)))
         so-far)
       (recur (redist v) (inc so-far) (conj seen v) first-seen 0))))
 
